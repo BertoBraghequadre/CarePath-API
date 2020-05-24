@@ -1,3 +1,4 @@
+# Copyright Gaetano Ippolito & Vincenzo Davide Carfora, 2020
 import datetime
 import os
 import sys
