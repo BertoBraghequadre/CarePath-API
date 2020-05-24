@@ -1,5 +1,5 @@
-# CarePath
-Strumento comunale di segnalazione contatti Covid-19
+# CarePath API
+API Rest in Flask per lo strumento comunale di segnalazione contagi Covid-19
 
 ## Installazione
 
