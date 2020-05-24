@@ -1,4 +1,3 @@
-# Copyright Gaetano Ippolito & Vincenzo Davide Carfora, 2020
 import datetime
 import os
 import sys
@@ -178,6 +177,8 @@ class Segnalazioni(Resource):
             oggetto["NomeLocale"] = riga[colonne["NomeLocale"]]
             oggetto["DataInizio"] = riga[colonne["DataInizio"]].strftime('%Y-%m-%d %H:%M:%S')
             oggetto["DataFine"] = riga[colonne["DataFine"]].strftime('%Y-%m-%d %H:%M:%S')
+            oggetto["Lat"] = riga[colonne["Lat"]]
+            oggetto["Lon"] = riga[colonne["Lon"]]
             risultato.append(oggetto)
 
         return risultato, 200 if len(risultato) > 0 else 204
