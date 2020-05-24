@@ -1,2 +1,2 @@
-# ProgettoTecnologieWeb
-Gli autori di questo progetto sono: Gaetano Ippolito e Vincenzo Davide Carfora
+# CarePath
+Strumento comunale di segnalazione contatti Covid-19
