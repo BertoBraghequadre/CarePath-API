@@ -143,8 +143,8 @@ class Segnalazioni(Resource):
         civico = (args.get('Civico') or '').strip()
         indirizzo = (args.get('Indirizzo') or '').strip()
 
-        # Controllo l'inserimento dell'indirizzo
-        if indirizzo == '' or indirizzo not in lista_indirizzi():
+        # Controllo l'inserimento dell'indirizzo, ma in caso di indirizzo vuoto consentiamo la ricerca
+        if indirizzo != '' and indirizzo not in lista_indirizzi():
             return {'error': 'Indirizzo non valido'}, 400
 
         indirizzo = "%" + (indirizzo + " " + civico).strip() + "%"
@@ -161,11 +161,8 @@ class Segnalazioni(Resource):
 
         cur = mysql.get_db().cursor()
         cur.execute('SELECT * FROM luogo WHERE Indirizzo LIKE %s AND NomeLocale LIKE %s '
-                    'AND ((DataFine BETWEEN %s AND %s) '
-                    'OR (DataInizio BETWEEN %s AND %s))', (indirizzo, nome_locale,
-                                                           data_inizio_inserita,
-                                                           data_fine_inserita,
-                                                           data_inizio_inserita, data_fine_inserita))
+                    'AND (DataInizio <= %s) and (DataFine >= %s) ', (indirizzo, nome_locale, data_fine_inserita,
+                                                                     data_inizio_inserita))
         righe = cur.fetchall()
         colonne = fields(cur)
         cur.close()
