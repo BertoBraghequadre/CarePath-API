@@ -190,7 +190,7 @@ class Segnalazioni(Resource):
         if indirizzo == '' or indirizzo not in lista_indirizzi():
             return {'error': 'Indirizzo non valido'}, 400
 
-        indirizzo = ((payload.get('Indirizzo') or '').strip() + civico).strip()
+        indirizzo = ((payload.get('Indirizzo') or '').strip() + ' ' + civico).strip()
 
         response = arcgis_find_address('Napoli, ' + indirizzo)
         if response is None:
