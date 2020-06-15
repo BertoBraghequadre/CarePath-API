@@ -223,7 +223,7 @@ class Segnalazioni(Resource):
         mysql.get_db().commit()
         cur.close()
         return {"Indirizzo": indirizzo, "NomeLocale": nome_locale, "DataInizio": data_inizio_inserita,
-                "DataFine": data_fine_inserita}, 200
+                "DataFine": data_fine_inserita, "Lat": lat, "Lon": lon}, 200
 
 
 @api.route('/v1/indirizzi')
